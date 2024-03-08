@@ -22,6 +22,17 @@ export class PrismaNotificationsRepository implements NotificationsRepository {
     return PrismaNotificationMapper.toDomain(notification)
   }
 
+  async countUnreadByRecipient(recipientId: string): Promise<number> {
+    const count = await this.prisma.notification.count({
+      where: {
+        recipientId,
+        readAt: null,
+      },
+    })
+
+    return count
+  }
+
   async create(notification: Notification): Promise<void> {
     const data = PrismaNotificationMapper.toPrisma(notification)
 

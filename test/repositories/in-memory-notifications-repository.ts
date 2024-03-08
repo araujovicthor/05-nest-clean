@@ -16,6 +16,12 @@ export class InMemoryNotificationsRepository
     return notification
   }
 
+  async countUnreadByRecipient(recipientId: string): Promise<number> {
+    return this.items.filter(
+      (item) => item.recipientId.toString() === recipientId && !item.readAt,
+    ).length
+  }
+
   async create(notification: Notification) {
     this.items.push(notification)
   }

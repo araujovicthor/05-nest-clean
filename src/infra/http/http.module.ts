@@ -43,6 +43,9 @@ import { StorageModule } from '../storage/storage.module'
 import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
 import { ReadNotificationController } from './controllers/read-notification.controller'
 import { ReadNotificationUseCase } from '@/domain/notification/application/use-cases/read-notification'
+import { AuthShowNumberUnreadNotificationsController } from './controllers/auth-show-unread-notifications.controller'
+import { ShowNumberUnreadNotificationsUseCase } from '@/domain/notification/application/use-cases/show-number-unread-notifications'
+import { PublicShowNumberUnreadNotificationsController } from './controllers/public-show-unread-notifications.controller'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, StorageModule],
@@ -67,6 +70,8 @@ import { ReadNotificationUseCase } from '@/domain/notification/application/use-c
     FetchAnswerCommentsController,
     UploadAttachmentController,
     ReadNotificationController,
+    AuthShowNumberUnreadNotificationsController,
+    PublicShowNumberUnreadNotificationsController,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -89,6 +94,7 @@ import { ReadNotificationUseCase } from '@/domain/notification/application/use-c
     FetchAnswerCommentsUseCase,
     UploadAndCreateAttachmentUseCase,
     ReadNotificationUseCase,
+    ShowNumberUnreadNotificationsUseCase,
   ],
 })
 export class HttpModule {}
